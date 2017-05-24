@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { Text, View, ScrollView } from 'react-native';
 
 import AlbumDetail from './AlbumDetail';
 
@@ -22,12 +22,12 @@ class AlbumList extends Component {
     renderAlbums() {
         console.log('[AlbumList] renderAlbums');
         /*usually we will just use the id or record id of the item
-        * but for this case we don't have any unique id, so we're just gonna
-        * use the album title*/
+         * but for this case we don't have any unique id, so we're just gonna
+         * use the album title*/
 
         /*the album is just a var name. it can be anything you want.
-        e.g. data, record, item, etc
-        this var/prop name will be referenced by the child component*/
+         e.g. data, record, item, etc
+         this var/prop name will be referenced by the child component*/
         return this.state.albums.map(
             album => <AlbumDetail key={album.title} album={album} />
         );
@@ -36,9 +36,12 @@ class AlbumList extends Component {
     render() {
         console.log(this.state);
         return (
-            <View>
-                { this.renderAlbums() }
-            </View>
+            <ScrollView>
+                <View>
+                    { this.renderAlbums() }
+                </View>
+            </ScrollView>
+
         );
     }
 
