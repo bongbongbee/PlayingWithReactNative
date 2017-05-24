@@ -1,17 +1,8 @@
-import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
 
 class AlbumList extends Component {
     state = { albums: [] };
-
-    render() {
-        console.log(this.state);
-        return (
-            <View>
-                <Text>Album List</Text>
-            </View>
-        );
-    }
 
     //lifecycle methods
     /*make some http requests here*/
@@ -25,6 +16,22 @@ class AlbumList extends Component {
                 this.setState({ albums: responseJSON });
             }).catch((error) => console.error(error));
     }
+
+    renderAlbums() {
+        console.log('[AlbumList] renderAlbums');
+        return this.state.albums.map(album => <Text>{ album.title }</Text>);
+    }
+
+    render() {
+        console.log(this.state);
+        return (
+            <View>
+                { this.renderAlbums() }
+            </View>
+        );
+    }
+
+
 }
 
 export default AlbumList;
