@@ -19,7 +19,12 @@ class AlbumList extends Component {
 
     renderAlbums() {
         console.log('[AlbumList] renderAlbums');
-        return this.state.albums.map(album => <Text>{ album.title }</Text>);
+        /*usually we will just use the id or record id of the item
+        * but for this case we don't have any unique id, so we're just gonna
+        * use the album title*/
+        return this.state.albums.map(
+            album => <Text k    ey={album.title}>{album.title}</Text>
+        );
     }
 
     render() {
